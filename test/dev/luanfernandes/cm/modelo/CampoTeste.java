@@ -88,5 +88,11 @@ public class CampoTeste {
 	void testeAbrirNaoMinadoNaoMarcado() {
 		assertTrue(campo.abrir());
 	}
+	
+	@Test
+	void testeAbrirNaoMinadoMarcado() {
+		campo.alternarMarcacao();
+		assertFalse(campo.abrir());
+	}
 
 }
