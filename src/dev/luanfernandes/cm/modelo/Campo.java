@@ -20,60 +20,53 @@ public class Campo {
 		this.linha = linha;
 		this.coluna = coluna;
 	}
-	
+
 	boolean adicionarVizinho(Campo vizinho) {
 		boolean linhaDiferente = linha != vizinho.linha;
 		boolean colunaDiferente = linha != vizinho.coluna;
 		boolean diagonal = linhaDiferente && colunaDiferente;
-		
+
 		int deltaLinha = Math.abs(linha - vizinho.linha);
 		int deltaColuna = Math.abs(coluna - vizinho.coluna);
 		int deltaGeral = deltaColuna + deltaLinha;
-		
-		if (deltaGeral ==1 && !diagonal) {
+
+		if (deltaGeral == 1 && !diagonal) {
 			vizinhos.add(vizinho);
 			return true;
-		}else if(deltaGeral ==2 && diagonal) {
+		} else if (deltaGeral == 2 && diagonal) {
 			vizinhos.add(vizinho);
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	
+
 	void alternarMarcacao() {
-		if(!aberto) {
+		if (!aberto) {
 			marcado = !marcado;
 		}
 	}
-	
+
 	boolean abrir() {
 		if (!aberto && !marcado) {
 			aberto = true;
-			
-			if(minado) {
+
+			if (minado) {
 				throw new ExplosaoException();
 			}
-			
+
 			if (vizinhancaSegura()) {
 				vizinhos.forEach(v -> v.abrir());
 			}
+
+			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
-	
+
 	boolean vizinhancaSegura() {
 		return vizinhos.stream().noneMatch(v -> v.minado);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
