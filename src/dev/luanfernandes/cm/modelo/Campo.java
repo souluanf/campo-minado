@@ -3,6 +3,8 @@ package dev.luanfernandes.cm.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.luanfernandes.cm.excecao.ExplosaoException;
+
 public class Campo {
 
 	private final int linha;
@@ -38,5 +40,12 @@ public class Campo {
 			return false;
 		}
 	}
+	
+	void alternarMarcacao() {
+		if(!aberto) {
+			marcado = !marcado;
+		}
+	}
+	
 
 }
