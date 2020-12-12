@@ -94,5 +94,12 @@ public class CampoTeste {
 		campo.alternarMarcacao();
 		assertFalse(campo.abrir());
 	}
+	
+	@Test
+	void testeAbrirMinadoMarcado() {
+		campo.alternarMarcacao();
+		campo.minar();
+		assertFalse(campo.abrir());
+	}
 
 }
