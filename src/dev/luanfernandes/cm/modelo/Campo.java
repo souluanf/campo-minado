@@ -82,6 +82,11 @@ public class Campo {
 		
 	}
 	
+	public boolean isFechado() {
+		return !isAberto();
+		
+	}
+	
 	
 	
 
