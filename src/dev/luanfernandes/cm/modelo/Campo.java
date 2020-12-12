@@ -47,5 +47,16 @@ public class Campo {
 		}
 	}
 	
+	boolean abrir() {
+		if (!aberto && !marcado) {
+			aberto = true;
+			
+			if(minado) {
+				throw new ExplosaoException();
+			}
+		}
+		return false;
+	}
+	
 
 }
